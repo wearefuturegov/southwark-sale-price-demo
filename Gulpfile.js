@@ -2,7 +2,9 @@
  
 var gulp = require('gulp');
 var sass = require('gulp-sass');
- 
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
+
 sass.compiler = require('node-sass');
  
 gulp.task('sass', function () {
@@ -15,4 +17,13 @@ gulp.task('sass', function () {
  
 gulp.task('sass:watch', function () {
   gulp.watch('./sass/**/*.scss', ['sass']);
+});
+
+gulp.task('scripts', function() {
+  browserify({
+    entries: 'src/index.js'
+  })
+  .bundle()
+  .pipe(source('index.js'))
+  .pipe(gulp.dest('./js'));
 });
