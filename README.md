@@ -4,6 +4,12 @@ This is a small frontend application that uses the [Southwark Sale Price Viablil
 
 # Running
 
+Clone the repo:
+
+```
+git clone https://github.com/wearefuturegov/southwark-sale-price-demo.git
+```
+
 Install the dependencies and compile the styles and javascript with:
 
 ```
