@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 const path = require('path');
 
 app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/assets')))
