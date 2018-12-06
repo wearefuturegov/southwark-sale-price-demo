@@ -1,6 +1,6 @@
 const Vue = require('vue/dist/vue.js');
 const L = require('leaflet');
-const geoJSON = require('./southwark.json');
+const geoJSON = require('../southwark.json');
 
 Vue.component('site-map', {
   data: function() {
