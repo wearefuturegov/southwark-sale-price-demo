@@ -55,7 +55,7 @@ var app = new Vue({
         }
 
         return axios.get(url, { params: params })
-                    .then(handleResponse)
+                    .then(this.handleResponse)
       }
     },
     handleResponse: function(response) {
