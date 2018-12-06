@@ -55,17 +55,18 @@ var app = new Vue({
         }
 
         return axios.get(url, { params: params })
-                    .then(function(response) {
-                            vue.isLoading = false;
-                            if (response.data.expected == true) { 
-                              vue.success = true
-                            } else {
-                              vue.errors = [];
-                              vue.addError('The price is outside the expected range', '#price');
-                              window.scroll({top: 0, left: 0, behavior: 'smooth' });
-                              return vue.errors;
-                            }
-                          })
+                    .then(handleResponse)
+      }
+    },
+    handleResponse: function(response) {
+      this.isLoading = false;
+      if (response.data.expected == true) { 
+        this.success = true
+      } else {
+        this.errors = [];
+        this.addError('The price is outside the expected range', '#price');
+        window.scroll({top: 0, left: 0, behavior: 'smooth' });
+        return this.errors;
       }
     }
   }
