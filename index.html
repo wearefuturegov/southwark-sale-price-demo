@@ -58,64 +58,66 @@
       </div>
     </header>
 
-    <div class="govuk-width-container">
-      <main class="govuk-main-wrapper " id="main-content" role="main">
-        <h1 class="govuk-heading-xl">Check property price</h1>
-        
-        <div v-if="!success">
-          <div v-if="errors">
-            <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
-              <h2 class="govuk-error-summary__title" id="error-summary-title">
-                There is a problem
-              </h2>
-              <div class="govuk-error-summary__body">
-                <ul class="govuk-list govuk-error-summary__list">
-                  <li v-for="error in errors">
-                      <a v-bind:href="error.target">{{ error.message }}</a>
-                  </li>
-                </ul>
+    <div v-cloak>
+      <div class="govuk-width-container">
+        <main class="govuk-main-wrapper " id="main-content" role="main">
+          <h1 class="govuk-heading-xl">Check property price</h1>
+          
+          <div v-if="!success">
+            <div v-if="errors">
+              <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+                <h2 class="govuk-error-summary__title" id="error-summary-title">
+                  There is a problem
+                </h2>
+                <div class="govuk-error-summary__body">
+                  <ul class="govuk-list govuk-error-summary__list">
+                    <li v-for="error in errors">
+                        <a v-bind:href="error.target">{{ error.message }}</a>
+                    </li>
+                  </ul>
+                </div>
               </div>
+            </div>
+            
+            <div id="form">
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="name">
+                  Development size (sq metres)
+                </label>
+                <input class="govuk-input govuk-input--width-10" id="size" name="size" type="text" v-model="size">
+              </div>
+              
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="price">
+                  Expected price (£)
+                </label>
+                <input class="govuk-input govuk-input--width-10" id="price" name="price" type="text" v-model="price">
+              </div>
+              
+              <site-map @update-latlng="updateLatLng"></site-map>
+
+              <input type="hidden" name="lat" id="lat" v-model="lat">
+              <input type="hidden" name="lng" id="lng" v-model="lng">
+
+              <button id="submit" class="govuk-button" v-on:click="submitForm">
+                Submit
+                <i 
+                  class="fas fa-spinner fa-spin"
+                  v-bind:class="{ 'govuk-visually-hidden': !isLoading }"
+                ></i>
+              </button>
             </div>
           </div>
           
-          <div id="form">
-            <div class="govuk-form-group">
-              <label class="govuk-label" for="name">
-                Development size (sq metres)
-              </label>
-              <input class="govuk-input govuk-input--width-10" id="size" name="size" type="text" v-model="size">
-            </div>
-            
-            <div class="govuk-form-group">
-              <label class="govuk-label" for="price">
-                Expected price (£)
-              </label>
-              <input class="govuk-input govuk-input--width-10" id="price" name="price" type="text" v-model="price">
-            </div>
-            
-            <site-map @update-latlng="updateLatLng"></site-map>
-
-            <input type="hidden" name="lat" id="lat" v-model="lat">
-            <input type="hidden" name="lng" id="lng" v-model="lng">
-
-            <button id="submit" class="govuk-button" v-on:click="submitForm">
-              Submit
-              <i 
-                class="fas fa-spinner fa-spin"
-                v-bind:class="{ 'govuk-visually-hidden': !isLoading }"
-              ></i>
-            </button>
-          </div>
-        </div>
-        
-        <div v-if="success">
-          <div class="govuk-panel govuk-panel--confirmation">
-            <h1 class="govuk-panel__title">
-              Everything looks fine
-            </h1>
-            <div class="govuk-panel__body">
-              Your reference number
-              <br><strong>HDJ2123F</strong>
+          <div v-if="success">
+            <div class="govuk-panel govuk-panel--confirmation">
+              <h1 class="govuk-panel__title">
+                Everything looks fine
+              </h1>
+              <div class="govuk-panel__body">
+                Your reference number
+                <br><strong>HDJ2123F</strong>
+              </div>
             </div>
           </div>
         </div>
