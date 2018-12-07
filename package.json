@@ -25,6 +25,7 @@
     "node-sass": "^4.10.0",
     "vinyl-source-stream": "^2.0.0",
     "vue": "^2.5.17",
+    "vue-router": "^3.0.2",
     "vueify": "^9.4.1"
   }
 }

@@ -72,7 +72,6 @@ module.exports = {
     },
     submitForm: function() {
       this.validateForm();
-      console.log(this.errors);
       
       if (this.errors == null) {
         var vue = this;
@@ -91,19 +90,8 @@ module.exports = {
     },
     handleResponse: function(response) {
       this.isLoading = false;
-      if (response.data.expected == true) { 
-        this.$root.currentRoute = '/results'
-        window.history.pushState(
-          null,
-          'Results',
-          '/results'
-        )
-      } else {
-        this.errors = [];
-        this.addError('The price is outside the expected range', '#price');
-        window.scroll({top: 0, left: 0, behavior: 'smooth' });
-        return this.errors;
-      }
+      window.localStorage.setItem('results', JSON.stringify(response.data));
+      this.$router.push({ path: '/results' })
     }
   }
 }
