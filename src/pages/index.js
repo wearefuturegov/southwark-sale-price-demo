@@ -90,6 +90,8 @@ module.exports = {
     },
     handleResponse: function(response) {
       this.isLoading = false;
+      window.localStorage.setItem('sale_price', parseFloat(this.price));
+      window.localStorage.setItem('size', parseFloat(this.size));
       window.localStorage.setItem('results', JSON.stringify(response.data));
       this.$router.push({ path: '/results' })
     }
