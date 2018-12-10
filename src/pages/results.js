@@ -64,9 +64,9 @@ module.exports = {
   },
   methods: {
     tryAgain: function() {
-      window.localStorage.setItem('sale_price', null);
-      window.localStorage.setItem('size', null);
-      window.localStorage.setItem('results', null);
+      window.localStorage.removeItem('sale_price');
+      window.localStorage.removeItem('size');
+      window.localStorage.removeItem('results');
       this.$router.push({ path: '/' })
     }
   }

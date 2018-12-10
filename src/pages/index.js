@@ -47,7 +47,7 @@ module.exports = {
   `,
   mounted: function() {
     console.log(window.localStorage.getItem('results'))
-    if (window.localStorage.getItem('results') !== 'null') {
+    if (window.localStorage.getItem('results') !== null) {
       this.$router.push({ path: '/results' });
     }
   },
