@@ -4,7 +4,8 @@ module.exports = {
       results: window.localStorage.getItem('results'),
       sale_price: window.localStorage.getItem('sale_price'),
       size: window.localStorage.getItem('size'),
-      expected: null
+      expected: null,
+      chartjs: require('chart.js')
     }
   },
   template: `<div id="results">
@@ -47,6 +48,7 @@ module.exports = {
         This puts your property outside the expected range.
       </p>
     </div>
+    <canvas id="chart"></canvas>
     <p>
       <button id="submit" class="govuk-button" v-on:click="tryAgain">
         Try another submission
@@ -58,6 +60,7 @@ module.exports = {
     if (this.results !== null) {
       this.results = JSON.parse(this.results);
       this.expected = this.results.expected;
+      this.drawChart();
     } else {
       this.$router.push({ path: '/' })
     }
@@ -68,6 +71,25 @@ module.exports = {
       window.localStorage.removeItem('size');
       window.localStorage.removeItem('results');
       this.$router.push({ path: '/' })
+    },
+    drawChart: function() {
+      var ctx = document.getElementById('chart');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: Object.keys(this.results.histogram),
+          datasets: [{
+            label: 'Number of properties in price band',
+            data: Object.values(this.results.histogram)
+          }]
+        },
+        options: {
+          responsive: true,
+          legend: {
+              display: false
+          }
+        }
+      });
     }
   }
 }
