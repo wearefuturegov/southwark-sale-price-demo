@@ -2,6 +2,8 @@
  
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var watch = require('gulp-watch');
+var batch = require('gulp-batch');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var vueify = require('vueify')
@@ -18,7 +20,9 @@ gulp.task('sass', function () {
 });
  
 gulp.task('sass:watch', function () {
-  gulp.watch('./sass/**/*.scss', ['sass']);
+  watch('./sass/**/*.scss', batch(function (events, done) {
+    gulp.start('sass', done);
+  }));
 });
 
 gulp.task('scripts', function() {
@@ -36,5 +40,7 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('scripts:watch', function() {
-  gulp.watch('./src/**/*.js', ['scripts'])
+  watch('./src/**/*.js', batch(function (events, done) {
+    gulp.start('scripts', done);
+  }));
 })
