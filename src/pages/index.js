@@ -45,6 +45,12 @@ module.exports = {
       </button>
     </div>
   `,
+  mounted: function() {
+    console.log(window.localStorage.getItem('results'))
+    if (window.localStorage.getItem('results') !== 'null') {
+      this.$router.push({ path: '/results' });
+    }
+  },
   methods: {
     addError: function(message, target) {
       this.errors.push(

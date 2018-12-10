@@ -47,13 +47,27 @@ module.exports = {
         This puts your property outside the expected range.
       </p>
     </div>
+    <p>
+      <button id="submit" class="govuk-button" v-on:click="tryAgain">
+        Try another submission
+      </button>
+    </p>
   </div>
   `,
   mounted: function() {
     if (this.results !== null) {
       this.results = JSON.parse(this.results);
       this.expected = this.results.expected;
-      console.log(this.results);
+    } else {
+      this.$router.push({ path: '/' })
+    }
+  },
+  methods: {
+    tryAgain: function() {
+      window.localStorage.setItem('sale_price', null);
+      window.localStorage.setItem('size', null);
+      window.localStorage.setItem('results', null);
+      this.$router.push({ path: '/' })
     }
   }
 }
