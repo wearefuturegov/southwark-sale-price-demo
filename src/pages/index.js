@@ -76,7 +76,7 @@ module.exports = {
       if (this.errors == null) {
         var vue = this;
         this.isLoading = true;
-        var url = 'http://localhost:3000/expected_range.json';
+        var url = 'https://southwark-sale-price-viability.herokuapp.com/expected_range.json';
         var params = {
           lat: this.lat,
           lng: this.lng,
