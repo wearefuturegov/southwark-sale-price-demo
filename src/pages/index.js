@@ -47,9 +47,6 @@ module.exports = {
   `,
   mounted: function() {
     window.scroll({top: 0, left: 0, behavior: 'smooth' });
-    if (window.localStorage.getItem('results') !== null) {
-      this.$router.push({ path: '/results' });
-    }
   },
   methods: {
     addError: function(message, target) {
