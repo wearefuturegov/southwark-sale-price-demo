@@ -4,3 +4,7 @@ $fa-font-path: "/fonts";
 @import "govuk-frontend/all";
 @import "@fortawesome/fontawesome-free/scss/fontawesome";
 @import "@fortawesome/fontawesome-free/scss/solid";
+
+.govuk-header__logo {
+  width: 100%;
+}
