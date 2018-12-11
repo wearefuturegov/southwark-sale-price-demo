@@ -69,7 +69,8 @@ module.exports = {
       window.localStorage.removeItem('sale_price');
       window.localStorage.removeItem('size');
       window.localStorage.removeItem('results');
-      this.$router.push({ path: '/' })
+      this.$router.push({ path: '/' });
+      window.scroll({top: 0, left: 0, behavior: 'smooth' });
     },
     range: function(start, end) {
       size = end - start;
