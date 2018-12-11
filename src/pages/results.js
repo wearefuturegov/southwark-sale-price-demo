@@ -57,6 +57,7 @@ module.exports = {
   `,
   mounted: function() {
     if (this.results !== null) {
+      window.scroll({top: 0, left: 0, behavior: 'smooth' });
       this.results = JSON.parse(this.results);
       this.expected = this.results.expected;
       this.drawChart();
@@ -70,7 +71,6 @@ module.exports = {
       window.localStorage.removeItem('size');
       window.localStorage.removeItem('results');
       this.$router.push({ path: '/' });
-      window.scroll({top: 0, left: 0, behavior: 'smooth' });
     },
     range: function(start, end) {
       size = end - start;
@@ -95,8 +95,6 @@ module.exports = {
 
         colours.push(colour)
       })
-
-      console.log(colours);
 
       var chart = new Chart(ctx, {
         type: 'bar',

@@ -46,7 +46,7 @@ module.exports = {
     </div>
   `,
   mounted: function() {
-    console.log(window.localStorage.getItem('results'))
+    window.scroll({top: 0, left: 0, behavior: 'smooth' });
     if (window.localStorage.getItem('results') !== null) {
       this.$router.push({ path: '/results' });
     }
@@ -100,7 +100,6 @@ module.exports = {
       window.localStorage.setItem('size', parseFloat(this.size));
       window.localStorage.setItem('results', JSON.stringify(response.data));
       this.$router.push({ path: '/results' });
-      window.scroll({top: 0, left: 0, behavior: 'smooth' });
     }
   }
 }
