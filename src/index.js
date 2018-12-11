@@ -11,7 +11,7 @@ const Results = require('./pages/results.js')
 
 const router = new VueRouter({
   mode: 'history',
-  base: __dirname,
+  base: '/',
   routes: [
     { path: '/', component: Index },
     { path: '/results', component: Results }
