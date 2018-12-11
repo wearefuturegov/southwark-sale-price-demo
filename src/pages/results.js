@@ -71,15 +71,40 @@ module.exports = {
       window.localStorage.removeItem('results');
       this.$router.push({ path: '/' })
     },
+    range: function(start, end) {
+      size = end - start;
+      return [...Array(size).keys()].map(i => i + start);
+    },
     drawChart: function() {
       var ctx = document.getElementById('chart');
-      new Chart(ctx, {
+      var keys = Object.keys(this.results.histogram);
+      var values = Object.values(this.results.histogram);
+      var colours = [];
+      var colour = 'rgba(0, 0, 0, 0.1)';
+      var expected = this.range(this.results.min_price_per_sq_mt, this.results.max_price_per_sq_mt);
+
+      keys.forEach(function(key) {
+        start = Number(key.split('..')[0])
+
+        if (expected.includes(start)) {
+          colour = 'rgba(0, 0, 255, 0.1)'
+        } else {
+          colour = 'rgba(0, 0, 0, 0.1)'
+        }
+
+        colours.push(colour)
+      })
+
+      console.log(colours);
+
+      var chart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: Object.keys(this.results.histogram),
+          labels: keys,
           datasets: [{
             label: 'Number of properties in price band',
-            data: Object.values(this.results.histogram)
+            data: values,
+            backgroundColor: colours
           }]
         },
         options: {
