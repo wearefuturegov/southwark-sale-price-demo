@@ -15,7 +15,10 @@ const router = new VueRouter({
   routes: [
     { path: '/', component: Index },
     { path: '/results', component: Results }
-  ]
+  ],
+  scrollBehavior() {
+    return { x: 0, y: 0 };
+  },
 })
 
 var app = new Vue({

@@ -57,7 +57,6 @@ module.exports = {
   `,
   mounted: function() {
     if (this.results !== null) {
-      window.scroll({top: 0, left: 0, behavior: 'smooth' });
       this.results = JSON.parse(this.results);
       this.expected = this.results.expected;
       this.drawChart();

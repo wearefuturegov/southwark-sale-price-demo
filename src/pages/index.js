@@ -45,9 +45,6 @@ module.exports = {
       </button>
     </div>
   `,
-  mounted: function() {
-    window.scroll({top: 0, left: 0, behavior: 'smooth' });
-  },
   methods: {
     addError: function(message, target) {
       this.errors.push(
