@@ -29,7 +29,7 @@ module.exports = {
       the range of prices per square metre in a mile radius around your proposed site area.
     </p>
     <p>
-      Given the data we have, we expect properties in this area to fetch, on average, somewhere 
+      We expect properties in this area to fetch, on average, somewhere 
       in the region of <strong>£{{ this.results.min_price_per_sq_mt}}</strong> to 
       <strong>£{{ this.results.max_price_per_sq_mt}}</strong> per square metre.
     </p>
