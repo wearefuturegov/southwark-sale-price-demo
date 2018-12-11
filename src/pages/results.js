@@ -29,10 +29,9 @@ module.exports = {
       the range of prices per square metre in a mile radius around your proposed site area.
     </p>
     <p>
-      The maximum price paid per square metre in this area was <strong>£{{ this.results.max_price_per_sq_mt}}</strong>
-    </p>
-    <p>
-      The minimum price paid per square metre in this area was <strong>£{{ this.results.min_price_per_sq_mt}}</strong>
+      Given the data we have, we expect properties in this area to fetch, on average, somewhere 
+      in the region of <strong>£{{ this.results.min_price_per_sq_mt}}</strong> to 
+      <strong>£{{ this.results.max_price_per_sq_mt}}</strong> per square metre.
     </p>
     <p>
       From your submission, it looks like you expect your property to sell for <strong>£{{ this.sale_price / this.size }}</strong>
@@ -40,7 +39,7 @@ module.exports = {
     </p>
     <div v-if="expected">
       <p>
-        This puts your property in the xx percentile.
+        This puts your property within the expected range.
       </p>
     </div>
     <div v-if="!expected">
