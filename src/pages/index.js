@@ -56,9 +56,9 @@ module.exports = {
     },
     validateForm: function() {
       this.errors = [];
-      if (this.size == null) this.addError('You must specify a size for the development', '#size');
-      if (this.price == null) this.addError('You must specify an estimated price for the development', '#price');
-      if (this.lat == null || this.lng == null) this.addError('You must choose a location for the site', '#map');
+      if (this.size == null) this.addError('You must specify a size for the development', 'size');
+      if (this.price == null) this.addError('You must specify an estimated price for the development', 'price');
+      if (this.lat == null || this.lng == null) this.addError('You must choose a location for the site', 'map');
 
       if (this.errors.length > 0) { 
         window.scroll({top: 0, left: 0, behavior: 'smooth' });
