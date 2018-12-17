@@ -28,11 +28,11 @@ module.exports = {
     </p>
     <p>
       We expect properties in this area to fetch, on average, somewhere 
-      in the region of <strong>£{{ this.results.min_price_per_sq_mt}}</strong> to 
-      <strong>£{{ this.results.max_price_per_sq_mt}}</strong> per square metre.
+      in the region of <strong>£{{ this.min_price }}</strong> to 
+      <strong>£{{ this.max_price }}</strong> per square metre.
     </p>
     <p>
-      From your submission, it looks like you expect your property to sell for <strong>£{{ this.sale_price / this.size }}</strong>
+      From your submission, it looks like you expect your property to sell for <strong>£{{ this.per_sq_mt }}</strong>
       per square metre.
     </p>
     <div v-if="expected">
@@ -57,6 +57,9 @@ module.exports = {
     if (this.results !== null) {
       this.results = JSON.parse(this.results);
       this.expected = this.results.expected;
+      this.min_price = this.results.min_price_per_sq_mt.toLocaleString();
+      this.max_price = this.results.max_price_per_sq_mt.toLocaleString();
+      this.per_sq_mt = (this.sale_price / this.size).toLocaleString();
       this.drawChart();
     } else {
       this.$router.push({ path: '/' })
