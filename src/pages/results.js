@@ -104,12 +104,12 @@ module.exports = {
           labels: keys,
           datasets: [
             {
-              label: 'Inside expected range',
+              label: 'Developments inside expected range',
               data: inRange,
               backgroundColor: 'rgba(0, 0, 255, 0.1)'
             },
             {
-              label: 'Outside expected range',
+              label: 'Developments outside expected range',
               data: outsideRange,
             },
         ]
