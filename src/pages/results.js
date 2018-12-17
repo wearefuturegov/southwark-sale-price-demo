@@ -80,36 +80,44 @@ module.exports = {
       var ctx = document.getElementById('chart');
       var keys = Object.keys(this.results.histogram);
       var values = Object.values(this.results.histogram);
-      var colours = [];
-      var colour = 'rgba(0, 0, 0, 0.1)';
       var expected = this.range(this.results.min_price_per_sq_mt, this.results.max_price_per_sq_mt);
 
-      keys.forEach(function(key) {
+      var inRange = [];
+      var outsideRange = [];
+
+      keys.forEach(function(key, i) {
         start = Number(key.split('..')[0])
 
         if (expected.includes(start)) {
-          colour = 'rgba(0, 0, 255, 0.1)'
+          inRange.push(values[i])
+          outsideRange.push(0)
         } else {
-          colour = 'rgba(0, 0, 0, 0.1)'
+          outsideRange.push(values[i])
+          inRange.push(0)
         }
 
-        colours.push(colour)
       })
 
       var chart = new Chart(ctx, {
         type: 'bar',
         data: {
           labels: keys,
-          datasets: [{
-            label: 'Number of properties in price band',
-            data: values,
-            backgroundColor: colours
-          }]
+          datasets: [
+            {
+              label: 'Inside expected range',
+              data: inRange,
+              backgroundColor: 'rgba(0, 0, 255, 0.1)'
+            },
+            {
+              label: 'Outside expected range',
+              data: outsideRange,
+            },
+        ]
         },
         options: {
           responsive: true,
           legend: {
-              display: false
+              display: true
           },
           scales: {
             yAxes: [{
@@ -121,8 +129,9 @@ module.exports = {
             xAxes: [{
               scaleLabel: {
                 display: true,
-                labelString: 'Price per m²'
-              }
+                labelString: 'Price per m²',
+              },
+              stacked: true
             }]
           }
         }
