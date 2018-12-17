@@ -110,6 +110,20 @@ module.exports = {
           responsive: true,
           legend: {
               display: false
+          },
+          scales: {
+            yAxes: [{
+              scaleLabel: {
+                display: true,
+                labelString: 'Number of Developments'
+              }
+            }],
+            xAxes: [{
+              scaleLabel: {
+                display: true,
+                labelString: 'Price per m²'
+              }
+            }]
           }
         }
       });
