@@ -12,21 +12,19 @@ module.exports = {
     <h1 class="govuk-heading-xl">Results</h1>
     <div v-if="expected">
       <p>
-        Based on the data we have, the proposed sale price of your property looks
-        feasable.  
+        Based on the data we have, the proposed sale price of your property looks typical of the current market.
       </p>
     </div>
     <div v-if="!expected">
       <p>
-        Based on the data we have, the proposed sale price of your property does <strong>not</strong>
-        look feasable.  
+        Based on the data we have, the proposed sale price of your property does <strong>not</strong> look typical of the current market.
       </p>
     </div>
     <p>
       We use data from the <a href="https://www.gov.uk/government/collections/price-paid-data">HM
       Land Registry Price Paid Dataset</a>, together with property square meterage from the
       <a href="https://epc.opendatacommunities.org/">MHCLG Energy Performance Dataset</a> to work out
-      the range of prices per square metre in a mile radius around your proposed site area.
+      the range of prices per square metre in a 1 kilometre radius around your proposed site area.
     </p>
     <p>
       We expect properties in this area to fetch, on average, somewhere 
